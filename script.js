@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", function() {
+
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+        loader.style.opacity = 0;
+        setTimeout(() => loader.style.display = 'none', 500);
+    }, 1000);
+});
+
 document.getElementById('card-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const cardNumber = document.getElementById('card-number').value.trim();
@@ -25,15 +34,12 @@ document.getElementById('card-form').addEventListener('submit', function(event) 
 });
 
 function validateCardNumber(number) {
-    // Remove todos os espaços e traços
     number = number.replace(/\s+/g, '').replace(/-/g, '');
 
-    // Verifica se o número contém apenas dígitos
     if (!/^\d+$/.test(number)) {
         return false;
     }
 
-    // Implementação do Algoritmo de Luhn
     let sum = 0;
     let shouldDouble = false;
 
@@ -54,16 +60,15 @@ function validateCardNumber(number) {
     return (sum % 10) === 0;
 }
 
-// Navegação suave
+
 document.querySelectorAll('.sidebar-menu a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
         const targetId = this.getAttribute('href').substring(1);
         const targetElement = document.getElementById(targetId);
 
         window.scrollTo({
-            top: targetElement.offsetTop - 60,
+            top: targetElement.offsetTop - 20,
             behavior: 'smooth'
         });
     });
