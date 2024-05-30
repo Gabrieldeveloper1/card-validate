@@ -1,10 +1,23 @@
 document.addEventListener("DOMContentLoaded", function() {
-
     const loader = document.getElementById('loader');
     setTimeout(() => {
         loader.style.opacity = 0;
         setTimeout(() => loader.style.display = 'none', 500);
     }, 1000);
+
+// Rolagem suave para o menu da barra lateral
+    document.querySelectorAll('.sidebar-menu a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            window.scrollTo({
+                top: targetElement.offsetTop - 20,
+                behavior: 'smooth'
+            });
+        });
+    });
 });
 
 document.getElementById('card-form').addEventListener('submit', function(event) {
@@ -59,17 +72,3 @@ function validateCardNumber(number) {
 
     return (sum % 10) === 0;
 }
-
-
-document.querySelectorAll('.sidebar-menu a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
-
-        window.scrollTo({
-            top: targetElement.offsetTop - 20,
-            behavior: 'smooth'
-        });
-    });
-});
