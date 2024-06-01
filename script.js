@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
+    // Hide the loader after the content is loaded
     const loader = document.getElementById('loader');
     setTimeout(() => {
         loader.style.opacity = 0;
         setTimeout(() => loader.style.display = 'none', 500);
     }, 1000);
 
-// Rolagem suave para o menu da barra lateral
+    // Smooth scrolling for sidebar menu
     document.querySelectorAll('.sidebar-menu a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -38,10 +39,10 @@ document.getElementById('card-form').addEventListener('submit', function(event) 
     }
 
     if (validateCardNumber(cardNumber)) {
-        result.textContent = 'Cartão Válido!';
+        result.textContent = 'Cartão Válido! ✅';
         result.className = 'success';
     } else {
-        result.textContent = 'Cartão Inválido!';
+        result.textContent = 'Cartão Inválido! ❌';
         result.className = 'error';
     }
 });
